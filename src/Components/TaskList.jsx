@@ -9,6 +9,14 @@ function Task({item, setTodo}){
             )
         );
     }
+
+    const taskDelete =()=>{
+        setTodo((prev) => 
+            prev.filter((todo) => 
+                todo.id != item.id)
+        );
+    };
+
     return(
         //?. will check if the item is null or undefined
         <li id={item?.id}>
@@ -17,7 +25,7 @@ function Task({item, setTodo}){
             {/* checks if item is null or undefined. */}
             <span style={item.is_completed ? {textDecoration:"line-through"}:{}}>{item?.title}</span>
                 <button>Edit</button>
-                <button>Delete</button>
+                <button onClick={taskDelete}>Delete</button>
             </div>
 
         </li>
