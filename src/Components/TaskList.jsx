@@ -1,5 +1,9 @@
+import { useState } from "react";
 
 function Task({item, setTodo}){
+    const [edit, setEdit] = useState("");
+
+    //marks task as completed
     const taskCompleted = () =>{
         setTodo((previous) =>
             previous.map((todo) =>
@@ -10,6 +14,7 @@ function Task({item, setTodo}){
         );
     }
 
+    //remvoes task
     const taskDelete =()=>{
         setTodo((prev) => 
             prev.filter((todo) => 
@@ -17,6 +22,12 @@ function Task({item, setTodo}){
         );
     };
 
+    //edit task
+    const editTask =()=>{
+        
+        setEdit = true;
+    }
+    
     return(
         //?. will check if the item is null or undefined
         <li id={item?.id}>
@@ -29,6 +40,8 @@ function Task({item, setTodo}){
             </div>
 
         </li>
+        
+        
     );
 }
 
